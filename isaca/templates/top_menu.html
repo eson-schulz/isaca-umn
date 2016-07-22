@@ -1,0 +1,25 @@
+{% load base_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+{# Implementation of bootstrap theme dropdown menu - shows top level links and their children #}
+<div class="row">
+
+    <div class="col-sm-{{ menuitems|length|boot_width }}">
+        <a href="/">
+            <div class="theme-menu-div">
+                <h4 class="theme-menu-item">Home</h4>
+            </div>
+        </a>
+    </div>
+
+    {% for menuitem in menuitems %}
+
+        <div class="col-sm-{{ menuitems|length|boot_width }}">
+            <a href="{% pageurl menuitem %}">
+                <div class="theme-menu-div">
+                    <h4 class="theme-menu-item">{{ menuitem.title }}</h4>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>

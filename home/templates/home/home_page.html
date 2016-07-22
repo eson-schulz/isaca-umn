@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    {% image page.background_image original as image %}
+    <div class="jumbotron theme-filled-background" style="background-image: url('{{ image.url }}')">
+        <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-6 theme-colored-background">
+            <h2 class="theme-important-text">{{ page.header }}</h2>
+            {% for block in page.body %}
+                <section>{{ block }}</section>
+            {% endfor %}
+            <div class="white-space-10"></div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

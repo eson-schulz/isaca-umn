@@ -1,0 +1,82 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+.theme-showcase .navbar .container {
+  width: auto;
+}
+.theme-menu-div {
+  border-top: 2px solid #C71F16;
+  padding-right: 10px;
+  padding-bottom: 1px;
+  margin-bottom: 3px;
+}
+.theme-menu-div:hover {
+  border-top: 5px solid #C71F16;
+  margin-bottom: 0;
+}
+.theme-menu-item {
+  padding-left: 8px;
+  color: #333333;
+}
+.theme-header-image {
+  display: block;
+  max-width: 50%;
+  height: auto;
+}
+.white-space-50 {
+  padding-top: 50px;
+}
+.white-space-30 {
+  padding-top: 30px;
+}
+.white-space-20 {
+  padding-top: 20px;
+}
+.white-space-15 {
+  padding-top: 15px;
+}
+.white-space-10 {
+  padding-top: 10px;
+}
+.white-space-5 {
+  padding-top: 5px;
+}
+.theme-filled-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.theme-colored-background {
+  background-color: #fff;
+  border-radius: 10px;
+}
+.theme-important-text {
+  color: #C71F16;
+}
+.rich-text img {
+  max-width: 100%;
+  height: auto;
+}
+.responsive-object {
+  position: relative;
+}
+.responsive-object iframe,
+.responsive-object object,
+.responsive-object embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.right {
+  float: right!important;
+}
