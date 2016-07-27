@@ -97,3 +97,4 @@ ENV/
 # Django
 isaca/settings/dev.py
 media/
+staticfiles/
