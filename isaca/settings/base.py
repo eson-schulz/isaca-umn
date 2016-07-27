@@ -135,6 +135,6 @@ WAGTAIL_SITE_NAME = "isaca"
 BASE_URL = 'http://example.com'
 
 try:
-    from .dev import *
+    from .local import *
 except ImportError:
     print "Can't access local settings"

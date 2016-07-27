@@ -94,7 +94,9 @@ ENV/
 # Database
 *.sqlite3
 
-# Django
-isaca/settings/dev.py
+# Django local settings
+isaca/settings/local.py
+
+# Django files
 media/
 staticfiles/
