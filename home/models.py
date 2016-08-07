@@ -7,6 +7,7 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.fields import StreamField, RichTextField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 
@@ -44,4 +45,35 @@ class ThinBlankPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('body')
+    ]
+
+
+class PersonBlock(blocks.StructBlock):
+    name = blocks.CharBlock(required=True)
+    position = blocks.CharBlock(required=True)
+    biography = blocks.CharBlock(required=False)
+
+    major = blocks.CharBlock(required=True)
+    minor = blocks.CharBlock(required=True)
+    grad_date = blocks.CharBlock(required=True)
+
+    picture = ImageChooserBlock(required=False)
+
+    class Meta:
+        icon = 'user'
+
+    def __unicode__(self):
+        return self.name
+
+
+class PeoplePageIndex(Page):
+    content = StreamField([
+        ('paragraph', blocks.RichTextBlock()),
+        ('people', blocks.ListBlock(
+            PersonBlock()
+        )),
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('content')
     ]
