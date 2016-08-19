@@ -100,3 +100,4 @@ isaca/settings/local.py
 # Django files
 media/
 staticfiles/
+static/
