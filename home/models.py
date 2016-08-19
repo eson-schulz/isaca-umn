@@ -54,13 +54,14 @@ class PersonBlock(blocks.StructBlock):
     biography = blocks.CharBlock(required=False)
 
     major = blocks.CharBlock(required=True)
-    minor = blocks.CharBlock(required=True)
+    minor = blocks.CharBlock(required=False)
     grad_date = blocks.CharBlock(required=True)
 
     picture = ImageChooserBlock(required=False)
 
     class Meta:
         icon = 'user'
+        template = "home/blocks/person.html"
 
     def __unicode__(self):
         return self.name
@@ -70,7 +71,7 @@ class PeoplePageIndex(Page):
     content = StreamField([
         ('paragraph', blocks.RichTextBlock()),
         ('people', blocks.ListBlock(
-            PersonBlock()
+            PersonBlock(), template='home/blocks/person_list.html'
         )),
     ])
 

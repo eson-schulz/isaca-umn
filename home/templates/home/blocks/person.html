@@ -1,0 +1,31 @@
+{% load wagtailimages_tags static %}
+
+<div class="text-center">
+
+    {% image self.picture max-250x250 class="img-responsive center-block person-image" %}
+
+    {% if self.name %}
+        <h3 class="text-center">{{ self.name }}</h3>
+    {% endif %}
+
+    {% if self.position %}
+        <p>{{ self.position }}</p>
+    {% endif %}
+
+    {% if self.biography %}
+        <p>{{ self.biography }}</p>
+    {% endif %}
+
+    {% if self.major %}
+        <p>Major: {{ self.major }}</p>
+    {% endif %}
+
+    {% if self.minor %}
+        <p>Minor: {{ self.minor }}</p>
+    {% endif %}
+
+    {% if self.grad_date %}
+        <p>{{ self.grad_date }}</p>
+    {% endif %}
+
+</div>

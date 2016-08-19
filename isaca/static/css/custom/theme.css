@@ -80,3 +80,6 @@ body {
 .right {
   float: right!important;
 }
+.person-image {
+  border-radius: 250px;
+}
