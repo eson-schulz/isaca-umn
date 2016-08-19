@@ -59,7 +59,7 @@ class DefaultBlock(blocks.StreamBlock):
     paragraph = blocks.RichTextBlock()
     calendar = CalendarBlock()
     mailchimp = EmailBlock()
-    person_list = blocks.ListBlock(PersonBlock(), icon='user')
+    person_list = blocks.ListBlock(PersonBlock(), template='home/blocks/person_list.html', icon='user')
 
 
 class HomePage(Page):
