@@ -18,6 +18,22 @@ class CalendarBlock(blocks.StructBlock):
         icon = 'date'
         template = 'home/blocks/calendar.html'
 
+    def __unicode__(self):
+        return self.url
+
+
+# Block used to subscribe users to a MailChimp account
+class EmailBlock(blocks.StructBlock):
+    action_url = blocks.CharBlock(required=True)
+    hidden_field_name = blocks.CharBlock(required=True)
+
+    class Meta:
+        icon = 'mail'
+        template = 'home/blocks/email.html'
+
+    def __unicode__(self):
+        return self.action_url
+
 
 class PersonBlock(blocks.StructBlock):
     name = blocks.CharBlock(required=True)
@@ -42,6 +58,7 @@ class PersonBlock(blocks.StructBlock):
 class DefaultBlock(blocks.StreamBlock):
     paragraph = blocks.RichTextBlock()
     calendar = CalendarBlock()
+    mailchimp = EmailBlock()
 
 
 class HomePage(Page):
