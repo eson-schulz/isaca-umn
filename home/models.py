@@ -11,6 +11,39 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 
+class CalendarBlock(blocks.StructBlock):
+    url = blocks.CharBlock(required=True)
+
+    class Meta:
+        icon = 'date'
+        template = 'home/blocks/calendar.html'
+
+
+class PersonBlock(blocks.StructBlock):
+    name = blocks.CharBlock(required=True)
+    position = blocks.CharBlock(required=True)
+    biography = blocks.CharBlock(required=False)
+
+    major = blocks.CharBlock(required=True)
+    minor = blocks.CharBlock(required=False)
+    grad_date = blocks.CharBlock(required=True)
+
+    picture = ImageChooserBlock(required=False)
+
+    class Meta:
+        icon = 'user'
+        template = 'home/blocks/person.html'
+
+    def __unicode__(self):
+        return self.name
+
+
+# Used for settings the default Streamfield
+class DefaultBlock(blocks.StreamBlock):
+    paragraph = blocks.RichTextBlock()
+    calendar = CalendarBlock()
+
+
 class HomePage(Page):
     header = CharField(max_length=200, blank=True)
     body = StreamField([
@@ -33,48 +66,16 @@ class HomePage(Page):
 
 
 class BlankPage(Page):
-    body = RichTextField()
+    body = StreamField(DefaultBlock())
 
     content_panels = Page.content_panels + [
-        FieldPanel('body')
+        StreamFieldPanel('body')
     ]
 
 
 class ThinBlankPage(Page):
-    body = RichTextField()
+    body = StreamField(DefaultBlock())
 
     content_panels = Page.content_panels + [
-        FieldPanel('body')
-    ]
-
-
-class PersonBlock(blocks.StructBlock):
-    name = blocks.CharBlock(required=True)
-    position = blocks.CharBlock(required=True)
-    biography = blocks.CharBlock(required=False)
-
-    major = blocks.CharBlock(required=True)
-    minor = blocks.CharBlock(required=False)
-    grad_date = blocks.CharBlock(required=True)
-
-    picture = ImageChooserBlock(required=False)
-
-    class Meta:
-        icon = 'user'
-        template = "home/blocks/person.html"
-
-    def __unicode__(self):
-        return self.name
-
-
-class PeoplePageIndex(Page):
-    content = StreamField([
-        ('paragraph', blocks.RichTextBlock()),
-        ('people', blocks.ListBlock(
-            PersonBlock(), template='home/blocks/person_list.html'
-        )),
-    ])
-
-    content_panels = Page.content_panels + [
-        StreamFieldPanel('content')
+        StreamFieldPanel('body')
     ]
